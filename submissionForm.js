@@ -1,8 +1,9 @@
+
 function validateForm(){
   console.log("this is in validateForm")
   var isValid = true;
 
-  var elements = document.getElementById('ss-form').getElementsByTagName('input');
+  var elements = submissionForm.html.getElementById('ss-form').getElementsByTagName('input');
 
   for(var i=0; i < elements.length; i++){
     if(elements[i].value.length < 1){
@@ -11,32 +12,47 @@ function validateForm(){
   }
 
   if(isValid){
-    document.getElementById('ss-form').submit();
+    submissionForm.html.getElementById('ss-form').submit();
   }
   else {
     alert('Please fill all required fields');
   }
 }
-var name
-var lastName
-var phoneNumber
-var email
-var homeAddress
-var enterPassword
-var repeatPassword
-var enterHobbie
+
+//declarations
+var form = {
+  name: "",
+  lastName: "",
+  phoneNumber: "",
+  emaiLAddress: "",
+  homeAddress: "",
+  password: "",
+  repeatPassword: "",
+  enterHobbie: "",
+}
+var jsonForm;
 
 function changeForm(n,lN,pN,e,hA,eP,rP,eH){
-  console.log("this is in changeForm")
-  name=n
-  lastName=lN
-  phoneNumber=pN
-  email=e
-  homeAddress=hA
-  enterPassword=eP
-  repeatPassword=rP
-  enterHobbie=eH
-}
+  console.log("this is connected")
+  form.name=n
+  form.lastName=lN
+  form.phoneNumber=pN
+  form.emaiLAddress=e
+  form.homeAddress=hA
+  form.password=eP
+  form.repeatPassword=rP
+  form.enterHobbie=eH
+  jsonMaker()
+  console.log(form)
+};
+
 function jsonMaker(){
-  //convert and output of json form
+  jsonForm=JSON.stringify(form);
 }
+
+//tests
+//console.log(form)
+changeForm("jin","robinson",665,"@gmail","sandiego","pokemon","pokemon","i like trains")
+//console.log(form)
+//jsonMaker();
+//console.log(jsonForm)
